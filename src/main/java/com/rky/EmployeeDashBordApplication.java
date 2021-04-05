@@ -19,15 +19,5 @@ public class EmployeeDashBordApplication {
 	{
 		return new DozerBeanMapper();	
 	}
-	
-	
-	/*
-	 * @Autowired() private CacheService cachService;
-	 * 
-	 * @Autowired private EmployeeService empService;
-	 * 
-	 * @PostConstruct public void loadData() { empService.getEmployee(); }
-	 */
-	
 
 }
