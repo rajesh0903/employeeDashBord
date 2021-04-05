@@ -32,6 +32,11 @@ public class EmployeeDTO {
 	public void setAddress(List<AddressDto> address) {
 		this.address = address;
 	}
+	@Override
+	public String toString() {
+		return "EmployeeDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ "]";
+	}
 	
 	
 }

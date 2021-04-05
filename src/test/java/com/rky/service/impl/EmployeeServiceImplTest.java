@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.rky.dto.EmployeeDTO;
 import com.rky.entity.Employee;
 import com.rky.repository.EmployeeRepository;
 import com.rky.service.EmployeeService;
@@ -50,8 +51,8 @@ public class EmployeeServiceImplTest {
 
 	@Test
 	public void testGetEmployeeById() {
-		Optional<Employee> emp=empService.getEmployeeById(1);
-		assertEquals(emp.get().getFirstName(),"Sing");
+		EmployeeDTO emp=empService.getEmployeeById(1);
+		assertEquals(emp.getFirstName(),"Sing");
 	}
 
 	@Test

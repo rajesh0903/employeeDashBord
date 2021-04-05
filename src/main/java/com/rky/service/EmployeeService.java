@@ -6,6 +6,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.springframework.scheduling.annotation.Async;
 
+import com.rky.dto.EmployeeDTO;
 import com.rky.entity.Employee;
 
 /**
@@ -15,11 +16,11 @@ import com.rky.entity.Employee;
 public interface EmployeeService {
 	
 	@Async("myExecutor")
-	public CompletableFuture<Employee> saveEmployee(final Employee employee);
-	public List<Employee> getEmployee();
-	public Optional<Employee> getEmployeeById(final Integer id);
+	public CompletableFuture<Employee> saveEmployee(final EmployeeDTO employee);
+	public List<EmployeeDTO> getEmployee();
+	public EmployeeDTO getEmployeeById(final Integer id);
 	public void deleteEmployee(Integer id);
-	public Employee updateEmployee(Employee employee);
-	public List<Employee> getEmployeeByFillter(Employee employee);
+	public EmployeeDTO updateEmployee(EmployeeDTO employee);
+	public List<Employee> getEmployeeByFillter(EmployeeDTO employee);
 	public String clearAllCache();
 }
