@@ -34,7 +34,8 @@ public class Controller {
 	
 	@PostMapping("/newEmployee")
 	public ResponseEntity<?> addEmployee(@RequestBody List<EmployeeDTO> employee) {
-		employee.forEach(emp->empService.saveEmployee(emp));		
+		employee.forEach(emp->{			
+				empService.saveEmployee(emp);});		
 		return  ResponseEntity.status(HttpStatus.CREATED).body("Employee saved successfully::");
 	}
 

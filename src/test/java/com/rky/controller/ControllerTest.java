@@ -28,35 +28,33 @@ class ControllerTest {
 	@InjectMocks
 	private Controller controller;
 	
-	String emp="";
+	private String emp="";
 
 	@Before
 	void setUp() throws Exception {
-		
-		 emp="{\r\n"
-				+ "    \"id\": 20,\r\n"
-				+ "    \"firstName\": \"Sing\",\r\n"
-				+ "    \"lastName\": \"yadav\",\r\n"
-				+ "    \"address\": [\r\n"
-				+ "        {\r\n"
-				+ "            \"pincode\": 56000,\r\n"
-				+ "            \"city\": \"Delhi\"\r\n"
-				+ "        }\r\n"
-				+ "    ]\r\n"
-				+ "}";
-
 		this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 	}
 
 	@Test
 	void testAddEmployee() throws Exception {
 		
+		 emp="[{\r\n"
+					+ "    \"id\": 21,\r\n"
+					+ "    \"firstName\": \"Sing\",\r\n"
+					+ "    \"lastName\": \"yadav\",\r\n"
+					+ "    \"address\": [\r\n"
+					+ "        {\r\n"
+					+ "            \"pincode\": 56000,\r\n"
+					+ "            \"city\": \"Delhi\"\r\n"
+					+ "        }\r\n"
+					+ "    ]\r\n"
+					+ "}]";
+		
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/newEmployee")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(emp)
-				.accept(MediaType.APPLICATION_JSON))
-		
-		.andExpect(MockMvcResultMatchers.status().is(200)).andExpect(MockMvcResultMatchers.status().isOk());
+				.accept(MediaType.APPLICATION_JSON))		
+		.andExpect(MockMvcResultMatchers.status().is(201)).andExpect(MockMvcResultMatchers.status().isCreated());
 	}
 
 	@Test
@@ -78,20 +76,20 @@ class ControllerTest {
 	void testGetEmployeeById() throws Exception {
 		
 		String s="{\r\n"
-				+ "        \"id\": 1,\r\n"
-				+ "        \"firstName\": \"Sing\",\r\n"
-				+ "        \"lastName\": \"yadav\",\r\n"
-				+ "        \"address\": [\r\n"
-				+ "            {\r\n"
-				+ "                \"pincode\": 56000,\r\n"
-				+ "                \"city\": \"Delhi\"\r\n"
-				+ "            }\r\n"
-				+ "        ]\r\n"
-				+ "    }";
+				+ "    \"id\": 9,\r\n"
+				+ "    \"firstName\": \"Sing\",\r\n"
+				+ "    \"lastName\": \"yadav\",\r\n"
+				+ "    \"address\": [\r\n"
+				+ "        {\r\n"
+				+ "            \"city\": \"Delhi\",\r\n"
+				+ "            \"pincode\": 56000\r\n"
+				+ "        }\r\n"
+				+ "    ]\r\n"
+				+ "}";
 		
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/emplist/id/1").accept(MediaType.APPLICATION_JSON))
-		.andExpect(MockMvcResultMatchers.status().is(200)).andExpect(MockMvcResultMatchers.status().isOk())
-		.andExpect(MockMvcResultMatchers.content().json(s));
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/emplist/id/22").accept(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers.status().is(200)).andExpect(MockMvcResultMatchers.status().isOk());
+		
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package com.rky.service.impl;
+package com.rky.serviceimpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rky.dto.EmployeeDTO;
 import com.rky.entity.Employee;
@@ -22,6 +23,7 @@ import com.rky.exception.CustomException;
 import com.rky.repository.EmployeeRepository;
 import com.rky.service.EmployeeService;
 
+@Transactional
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -32,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	
 	  @Autowired() 
-	  private DozerBeanMapper mapper;;
+	  private DozerBeanMapper mapper;
 	 
 
 	@Caching(put = { @CachePut(value = "EmployeeCacheById", key = "#employee.get(0).id"),

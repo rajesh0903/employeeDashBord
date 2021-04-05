@@ -16,7 +16,7 @@ import com.rky.entity.Employee;
 public interface EmployeeService {
 	
 	@Async("myExecutor")
-	public CompletableFuture<Employee> saveEmployee(final EmployeeDTO employee);
+	public CompletableFuture<Employee> saveEmployee(final EmployeeDTO employee) ;
 	public List<EmployeeDTO> getEmployee();
 	public EmployeeDTO getEmployeeById(final Integer id);
 	public void deleteEmployee(Integer id);

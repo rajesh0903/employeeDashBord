@@ -16,9 +16,9 @@ public class ExecutorConfig {
 	@Bean(name = "myExecutor")
 	public Executor executor() {
 		ThreadPoolTaskExecutor threadPoolexecutor = new ThreadPoolTaskExecutor();
-		threadPoolexecutor.setCorePoolSize(2);
-		threadPoolexecutor.setMaxPoolSize(4);
-		threadPoolexecutor.setQueueCapacity(5);
+		threadPoolexecutor.setCorePoolSize(5);
+		threadPoolexecutor.setMaxPoolSize(10);
+		threadPoolexecutor.setQueueCapacity(10);
 		threadPoolexecutor.setThreadNamePrefix("threadTask-");
 		threadPoolexecutor.setRejectedExecutionHandler((r, executor) -> {
 			try {

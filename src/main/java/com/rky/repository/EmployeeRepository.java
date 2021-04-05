@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 
 import com.rky.entity.Employee;
 
-@Repository
 public interface EmployeeRepository extends MongoRepository<Employee, Integer> {
 
 }
